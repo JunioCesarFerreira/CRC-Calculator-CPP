@@ -31,9 +31,9 @@ private:
 	inline data_t calc_with_reflected_input(char *data, size_t length)
 	{
 		data_t crc = init_value;
-		for (uint8_t i = 0; i < length; i++)
+		for (size_t i = 0; i < length; i++)
 		{
-			uint8_t curr_byte = (uint8_t)data[i]; // Variável auxiliar de verificação do bit mais significativo.
+			char curr_byte = data[i]; // Variável de verificação do bit mais significativo.
 			for (int j = 0; j < 8; j++)
 			{
 				if (((curr_byte ^ crc) & msbMask) != 0)
@@ -51,10 +51,10 @@ private:
 	inline data_t calc_without_reflected_input(char *data, size_t length)
 	{
 		data_t crc = init_value;
-		for (uint8_t i = 0; i < length; i++)
+		for (size_t i = 0; i < length; i++)
 		{
 			crc ^= (data_t)data[i] << shift_bits;
-			for (uint8_t j = 0; j < 8; j++)
+			for (int j = 0; j < 8; j++)
 			{
 				if ((crc & msbMask) != 0)
 				{
