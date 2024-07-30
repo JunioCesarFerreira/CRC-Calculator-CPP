@@ -71,11 +71,11 @@ digamos que $n=4$ então a sequência de bits resultado é `1101000110100000`.
 
     - Os bits restantes correspondem ao $R(x)$ sendo 
 
-    $$
+$$
     D(x) \cdot x^n = Q(x) \cdot G(x) + R(x)
-    $$
+$$
 
-    onde $Q(x)$ é o quociente da divisão e $R(x)$ é o resto, que representa o valor CRC. 
+   onde $Q(x)$ é o quociente da divisão e $R(x)$ é o resto, que representa o valor CRC. 
 
 4. **Formação da Palavra-Código**: A palavra-código é formada concatenando o polinômio dos dados com o resto $R(x)$.
 
