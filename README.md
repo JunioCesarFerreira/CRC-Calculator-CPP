@@ -1,5 +1,7 @@
 # CRC-Calculator-CPP
 
+🌍 *[Português](README.md) ∙ [English](README_en.md)*
+
 Este repositório contém uma implementação em C++ para calcular o CRC (*Cyclic Redundancy Check*) para vários tamanhos de dados e configurações. A implementação é genérica, permitindo diferentes polinômios divisores, valores iniciais e configurações de reflexão.
 
 ## Visão Geral
