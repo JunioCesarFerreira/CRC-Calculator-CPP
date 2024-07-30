@@ -50,11 +50,13 @@ where $n$ is the degree of the polynomial and $g_i$ are the binary coefficients.
 #### CRC Calculation
 
 1. **Data Representation**: The data $D(x)$ is represented as a binary polynomial. For example, a bit sequence `110100011010` can be represented as
+
 $$
 D(x)=x^{11}+x^{10}+x^8+x^4+x^3+x^1
 $$
 
 2. **Multiplication by $x^n$**: The data polynomial is multiplied by $x^n$, where $n$ is the degree of the generator polynomial. In binary, this is equivalent to appending $n$ zeros to the end of the sequence, as follows:
+
 $$
 x^n \cdot D(x)=x^{11+n}+x^{10+n}+x^{8+n}+x^{4+n}+x^{3+n}+x^{1+n}
 $$
@@ -69,13 +71,13 @@ let's say $n=4$, then the resulting bit sequence is `1101000110100000`.
 
     - The remaining bits correspond to $R(x)$ as follows:
     
-    $$
+$$
     D(x) \cdot x^n = Q(x) \cdot G(x) + R(x)
-    $$
+$$
 
-    where $Q(x)$ is the quotient of the division and $R(x)$ is the remainder, representing the CRC value.
+where $Q(x)$ is the quotient of the division and $R(x)$ is the remainder, representing the CRC value.
 
-4. **Forming the Codeword**: The codeword is formed by concatenating the data polynomial with the remainder $R(x)$.
+5. **Forming the Codeword**: The codeword is formed by concatenating the data polynomial with the remainder $R(x)$.
 
 ## Usage
 
