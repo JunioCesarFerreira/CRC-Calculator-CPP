@@ -15,11 +15,11 @@ O CRC é um método utilizado para detectar erros em dados digitais. Ele utiliza
 
 ## Teoria do CRC
 
-### O que é CRC?
+### Código de Detecçaõ de Erros
 
 CRC é um código de detecção de erros popular utilizado em redes digitais e dispositivos de armazenamento. Ele funciona anexando uma sequência de bits redundantes (bits CRC) ao final do bloco de dados, formando uma palavra-código. Quando a palavra-código é recebida ou lida, o mesmo algoritmo de CRC é utilizado para calcular a soma de verificação. Se a soma de verificação calculada coincidir com os bits CRC anexados, os dados são considerados intactos.
 
-### Como o CRC Funciona
+#### Como o CRC Funciona
 
 1. **Representação dos Dados**: Os dados a serem transmitidos são representados como um polinômio binário.
 2. **Divisão Polinomial**: O polinômio dos dados é dividido por um polinômio predeterminado (polinômio divisor) usando divisão binária.
@@ -27,9 +27,9 @@ CRC é um código de detecção de erros popular utilizado em redes digitais e d
 4. **Transmissão**: O valor CRC é anexado aos dados e enviado como uma palavra-código.
 5. **Verificação**: No destino, o mesmo processo de divisão é realizado na palavra-código recebida. Se o resto for zero, os dados são considerados válidos.
 
-### Reflexão
+#### Reflexão
 
-Reflexão refere-se a inverter a ordem dos bits dos bytes dos dados antes do cálculo do CRC. Isso é frequentemente usado para simplificar a implementação em hardware.
+Reflexão refere-se a inverter a ordem dos bits dos bytes dos dados antes do cálculo do CRC. Isso é usado para compatibilidade com certas implementações de hardware que processam bits em ordem inversa.
 
 ### Detalhes Teóricos
 
@@ -47,39 +47,39 @@ onde $n$ é o grau do polinômio e $g_i$ são os coeficientes binários.
 
 #### Cálculo do CRC
 
-1. **Representação dos Dados**: Os dados $D(x)$ são representados como um polinômio binário.
+1. **Representação dos Dados**: Os dados $D(x)$ são representados como um polinômio binário.  Por exemplo, uma sequência de bits `110100011010` pode ser representada como
+$$
+D(x)=x^{11}+x^{10}+x^{8}+x^{4}+x^{3}+x^{1}
+$$
 
-2. **Multiplicação por $x^n$**: O polinômio dos dados é multiplicado por $x^n$ (equivalente a adicionar $n$ zeros ao final dos dados).
+2. **Multiplicação por $x^n$**: O polinômio de dados é multiplicado por $x^n$, onde $n$ é o grau do polinômio gerador. Em binário é equivalente a adicionar $n$ zeros no final da sequência, pois:
+$$
+x^n \cdot D(x)=x^{11+n}+x^{10+n}+x^{8+n}+x^{4+n}+x^{3+n}+x^{1+n}
+$$
 
-3. **Divisão Polinomial**: O polinômio dos dados multiplicado por $x^n$ é dividido pelo polinômio gerador $G(x)$. O resto $R(x)$ da divisão é o valor CRC.
+digamos que $n=4$ então a sequência de bits resultado é `1101000110100000`.
+
+3. **Divisão Polinomial**: O polinômio dos dados multiplicado por $x^n$ é dividido pelo polinômio gerador $G(x)$. O resto $R(x)$ da divisão é o valor CRC. Isto é realizado pelo seguinte algoritmo:
+
+    - Alinhe o polinômio multiplicado com o polinômio gerador e realize a divisão usando XOR para subtração.
+
+    - O processo é repetido até que o número de bits restantes seja menor que o número de bits do polinômio gerador.
+
+    - Os bits restantes correspondem ao $R(x)$ sendo 
+
+    $$
+    D(x) \cdot x^n = Q(x) \cdot G(x) + R(x)
+    $$
+
+    onde $Q(x)$ é o quociente da divisão e $R(x)$ é o resto, que representa o valor CRC. 
 
 4. **Formação da Palavra-Código**: A palavra-código é formada concatenando o polinômio dos dados com o resto $R(x)$.
-
-O processo pode ser descrito como:
-
-$$
-D(x) \cdot x^n = Q(x) \cdot G(x) + R(x)
-$$
-
-onde $Q(x)$ é o quociente da divisão e $R(x)$ é o resto, que representa o valor CRC.
-
-#### Reflexão
-
-Refletir os bits de um valor envolve inverter a ordem dos bits. Isso é usado para compatibilidade com certas implementações de hardware que processam bits em ordem inversa.
 
 ## Uso
 
 ### Definição da Classe
 
 A classe template `CrcClass` é usada para calcular valores CRC. A classe suporta diferentes tamanhos de dados e configurações.
-
-```cpp
-template<class data_t>
-class CrcClass
-{
-  // Definição da classe conforme fornecida no código-fonte
-};
-```
 
 ### Exemplo de Uso
 
@@ -106,13 +106,50 @@ int main()
 }
 ```
 
-## Testes
+## Compilação
 
-O código fornecido inclui um programa de testes abrangente que valida a implementação do CRC contra valores conhecidos.
+### Usando MINGW64 e g++
+
+1. Instale o [MINGW-w64](http://mingw-w64.org/) e adicione-o ao seu PATH.
+2. Abra o terminal MINGW64 e navegue até o diretório do projeto.
+3. Compile o código com o comando:
+
+    ```sh
+    g++ -o test CrcCalculator.cpp
+    ```
+
+4. Execute o programa com:
+
+    ```sh
+    ./test
+    ```
+
+5. A execução do `test` deve retornar:
+    ```
+    CRC-8
+    result crc: f1  checked value: f1
+    result crc: 8f  checked value: 8f
+    result crc: c8  checked value: c8
+    result crc: 13  checked value: 13
+
+    CRC-16
+    result crc: 6755        checked value: 6755
+    result crc: aae6        checked value: aae6
+    result crc: 3100        checked value: 3100
+    result crc:   8c        checked value:   8c
+
+    CRC-32
+    result crc: b8b77646    checked value: b8b77646
+    result crc: 626eed1d    checked value: 626eed1d
+    result crc: d26e6139    checked value: d26e6139
+    result crc: 9c86764b    checked value: 9c86764b
+    ```
+
+**Observação**: Outra opção é instalar o compilador g++ e configurar sua execução com o VS Code. 
 
 ## Contribuições
 
-Correções e melhorias são sempre bem vindas!
+Correções e melhorias são sempre bem-vindas!
 
 ## Licença
 
