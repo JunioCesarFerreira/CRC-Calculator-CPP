@@ -50,11 +50,13 @@ onde $n$ é o grau do polinômio e $g_i$ são os coeficientes binários.
 #### Cálculo do CRC
 
 1. **Representação dos Dados**: Os dados $D(x)$ são representados como um polinômio binário.  Por exemplo, uma sequência de bits `110100011010` pode ser representada como
+   
 $$
 D(x)=x^{11}+x^{10}+x^{8}+x^{4}+x^{3}+x^{1}
 $$
 
 2. **Multiplicação por $x^n$**: O polinômio de dados é multiplicado por $x^n$, onde $n$ é o grau do polinômio gerador. Em binário é equivalente a adicionar $n$ zeros no final da sequência, pois:
+
 $$
 x^n \cdot D(x)=x^{11+n}+x^{10+n}+x^{8+n}+x^{4+n}+x^{3+n}+x^{1+n}
 $$
