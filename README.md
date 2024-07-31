@@ -17,7 +17,7 @@ O CRC é um método utilizado para detectar erros em dados digitais. Ele utiliza
 
 ## Teoria do CRC
 
-### Código de Detecçaõ de Erros
+### Código de Detecção de Erros
 
 CRC é um código de detecção de erros popular utilizado em redes digitais e dispositivos de armazenamento. Ele funciona anexando uma sequência de bits redundantes (bits CRC) ao final do bloco de dados, formando uma palavra-código. Quando a palavra-código é recebida ou lida, o mesmo algoritmo de CRC é utilizado para calcular a soma de verificação. Se a soma de verificação calculada coincidir com os bits CRC anexados, os dados são considerados intactos.
 
