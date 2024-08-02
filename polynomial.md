@@ -113,7 +113,7 @@ A divisão de polinômios na forma binária segue a mesma lógica da divisão de
    - **Primeiro Passo**:
       - Divida $110$ (os três primeiros bits de $11001$) por $111$ usando XOR:
 $$
-     110 \oplus 111 = 001
+110 \oplus 111 = 001
 $$
    - Resto parcial: $001$
 
@@ -121,7 +121,7 @@ $$
      - Anexe o próximo bit de $P(x)$, que é $0$, ao resto: $0010$.
      - Divida $0010$ por $111$ usando XOR:
 $$
-     0010 \oplus 1110 = 1100
+0010 \oplus 1110 = 1100
 $$
    - Resto parcial: $1100$
 
@@ -129,7 +129,7 @@ $$
      - Anexe o último bit de $P(x)$, que é $1$, ao resto: $11001$.
      - Divida $1100$ por $111$ usando XOR:
 $$
-     1100 \oplus 1110 = 0101
+1100 \oplus 1110 = 0101
 $$
 
 ### Resultado
@@ -155,11 +155,11 @@ $$
 - **Operações**:
   - **Adição** de polinômios em $\mathbb{Z}_2$ corresponde a realizar a soma de coeficientes módulo 2:
 $$
-    (a_i + b_i) \pmod{2}
+(a_i + b_i) \pmod{2}
 $$
   - **XOR** de bits em sequências binárias:
 $$
-    a_i \oplus b_i
+a_i \oplus b_i
 $$
 
 ### Demonstração de Isomorfismo
@@ -171,39 +171,39 @@ Para mostrar que a adição de polinômios é isomorfa à operação XOR em sequ
 
 2. **Associatividade**:
    - A adição de polinômios é associativa:
- $$
-     (P(x) + Q(x)) + R(x) = P(x) + (Q(x) + R(x))
- $$
+$$
+(P(x) + Q(x)) + R(x) = P(x) + (Q(x) + R(x))
+$$
    - O XOR de sequências binárias é associativo:
- $$
-     (a \oplus b) \oplus c = a \oplus (b \oplus c)
- $$
+$$
+(a \oplus b) \oplus c = a \oplus (b \oplus c)
+$$
 
 3. **Elemento Neutro**:
    - O polinômio zero $0(x)$ corresponde à sequência binária $0 \cdots 0$, e:
- $$
-     P(x) + 0(x) = P(x)
- $$
+$$
+P(x) + 0(x) = P(x)
+$$
    - A sequência de zeros é o elemento neutro para o XOR:
- $$
-     a \oplus 0 = a
- $$
+$$
+a \oplus 0 = a
+$$
 
 4. **Elemento Inverso**:
    - Cada polinômio $P(x)$ tem um inverso em $\mathbb{Z}_2$ que é ele mesmo:
- $$
-     P(x) + P(x) = 0(x)
- $$
+$$
+P(x) + P(x) = 0(x)
+$$
    - Para o XOR, cada bit tem um inverso que é ele mesmo:
- $$
-     a \oplus a = 0
- $$
+$$
+a \oplus a = 0
+$$
 
 5. **Distributividade**:
    - A multiplicação de polinômios sobre a adição em $\mathbb{Z}_2$ é distributiva, assim como a combinação de AND com XOR nas sequências binárias:
- $$
-     a \cdot (b \oplus c) = (a \cdot b) \oplus (a \cdot c)
- $$
+$$
+a \cdot (b \oplus c) = (a \cdot b) \oplus (a \cdot c)
+$$
 
 ### Correspondência de Divisão
 
@@ -214,21 +214,21 @@ Na divisão de polinômios em $\mathbb{Z}_2$, as etapas do algoritmo de divisão
 
 1. **Primeiro Passo**:
    - Subtrair $111$ de $110$ (XOR):
- $$
-     110 \oplus 111 = 001
- $$
+$$
+110 \oplus 111 = 001
+$$
 
 2. **Segundo Passo**:
    - Anexar o próximo bit de $P(x)$ e continuar a operação:
- $$
-     0010 \oplus 1110 = 1100
- $$
+$$
+0010 \oplus 1110 = 1100
+$$
 
 3. **Terceiro Passo**:
    - Continuar com a operação de subtração binária:
- $$
-     1100 \oplus 1110 = 0101
- $$
+$$
+1100 \oplus 1110 = 0101
+$$
 
 Essas etapas de XOR correspondem exatamente às operações de divisão de polinômios, ilustrando que a operação de divisão de polinômios na forma binária é isomorfa à divisão binária utilizando XOR. O quociente e o resto obtidos são coerentes em ambas as representações.
 
