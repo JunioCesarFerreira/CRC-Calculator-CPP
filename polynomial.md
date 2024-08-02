@@ -112,28 +112,25 @@ A divisão de polinômios na forma binária segue a mesma lógica da divisão de
 
    - **Primeiro Passo**:
       - Divida $110$ (os três primeiros bits de $11001$) por $111$ usando XOR:
-
-   $$
+$$
      110 \oplus 111 = 001
-   $$
-      - Resto parcial: $001$
+$$
+   - Resto parcial: $001$
 
    - **Segundo Passo**:
      - Anexe o próximo bit de $P(x)$, que é $0$, ao resto: $0010$.
      - Divida $0010$ por $111$ usando XOR:
-
-   $$
+$$
      0010 \oplus 1110 = 1100
-   $$
-     - Resto parcial: $1100$
+$$
+   - Resto parcial: $1100$
 
    - **Terceiro Passo**:
      - Anexe o último bit de $P(x)$, que é $1$, ao resto: $11001$.
      - Divida $1100$ por $111$ usando XOR:
-     
-   $$
+$$
      1100 \oplus 1110 = 0101
-   $$
+$$
 
 ### Resultado
 
