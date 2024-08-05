@@ -12,7 +12,7 @@ Os polinômios podem ser manipulados de maneira semelhante aos números, com ope
 
 ## Estrutura de Anel dos Polinômios
 
-A estrutura algébrica dos polinômios possui propriedades que os classificam como um anel. Um anel é uma estrutura $(R, +, \cdot)$ em que $R$ é um conjunto equipado com duas operações binárias: adição (\(+\)) e multiplicação $(\cdot)$.
+A estrutura algébrica dos polinômios possui propriedades que os classificam como um anel. Um anel é uma estrutura $(R, +, \cdot)$ em que $R$ é um conjunto equipado com duas operações binárias: adição ($+$) e multiplicação $(\cdot)$.
 
 Para mostrar que o conjunto dos polinômios com coeficientes em um corpo $K$ forma um anel, é necessário verificar que as operações de adição e multiplicação de polinômios satisfazem as seguintes propriedades:
 
@@ -112,7 +112,7 @@ A divisão de polinômios na forma binária segue a mesma lógica da divisão de
 
    - **Primeiro Passo**:
       - Divida $110$ (os três primeiros bits de $11001$) por $111$ usando XOR:
-      
+
 $$
 110 \oplus 111 = 001
 $$

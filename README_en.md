@@ -79,6 +79,8 @@ where $Q(x)$ is the quotient of the division and $R(x)$ is the remainder, repres
 
 5. **Forming the Codeword**: The codeword is formed by concatenating the data polynomial with the remainder $R(x)$.
 
+In the file [`polynomial`](polynomial_en.md) we present some more theoretical details about polynomials and the equivalence of polynomials over $\mathbb{Z}_2$ and binary sequences (or binary words).
+
 ## Usage
 
 ### Class Definition
@@ -110,9 +112,10 @@ int main()
 }
 ```
 
+
 ## Compilation
 
-### Using MINGW64 and g++
+### Compilation on Windows
 
 1. Install [MINGW-w64](http://mingw-w64.org/) and add it to your PATH.
 2. Open the MINGW64 terminal and navigate to the project directory.
@@ -128,28 +131,51 @@ int main()
     ./test
     ```
 
-5. Running `test` should return:
-    ```
-    CRC-8
-    result crc: f1  checked value: f1
-    result crc: 8f  checked value: 8f
-    result crc: c8  checked value: c8
-    result crc: 13  checked value: 13
+**Note**: Another option is to install the g++ compiler and set it up with VS Code.
 
-    CRC-16
-    result crc: 6755        checked value: 6755
-    result crc: aae6        checked value: aae6
-    result crc: 3100        checked value: 3100
-    result crc:   8c        checked value:   8c
+### Compilation on Linux
 
-    CRC-32
-    result crc: b8b77646    checked value: b8b77646
-    result crc: 626eed1d    checked value: 626eed1d
-    result crc: d26e6139    checked value: d26e6139
-    result crc: 9c86764b    checked value: 9c86764b
+1. Ensure that `g++` is installed on your system. If not, you can install it by running:
+
+    ```sh
+    sudo apt update
+    sudo apt install g++
     ```
 
-**Note**: Another option is to install the g++ compiler and configure it to run with VS Code.
+2. Navigate to the project directory.
+3. Compile the code with the command:
+
+    ```sh
+    g++ -o test CrcCalculator.cpp
+    ```
+
+4. Run the program with:
+
+    ```sh
+    ./test
+    ```
+
+Running `test` should return:
+
+```
+CRC-8
+result crc: f1  checked value: f1
+result crc: 8f  checked value: 8f
+result crc: c8  checked value: c8
+result crc: 13  checked value: 13
+
+CRC-16
+result crc: 6755        checked value: 6755
+result crc: aae6        checked value: aae6
+result crc: 3100        checked value: 3100
+result crc:   8c        checked value:   8c
+
+CRC-32
+result crc: b8b77646    checked value: b8b77646
+result crc: 626eed1d    checked value: 626eed1d
+result crc: d26e6139    checked value: d26e6139
+result crc: 9c86764b    checked value: 9c86764b
+```
 
 ## Contributions
 

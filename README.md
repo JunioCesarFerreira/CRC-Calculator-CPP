@@ -13,7 +13,7 @@ O CRC é um método utilizado para detectar erros em dados digitais. Ele utiliza
 - Cálculo genérico de CRC para tamanhos de dados de 8, 16, 32 e 64 bits.
 - Polinômio divisor e valor inicial configuráveis.
 - Suporte para reflexão de entrada e saída.
-- Programa de teste abrangente para validar a implementação.
+- Programa de teste para validar a implementação.
 
 ## Teoria do CRC
 
@@ -79,6 +79,8 @@ $$
 
 4. **Formação da Palavra-Código**: A palavra-código é formada concatenando o polinômio dos dados com o resto $R(x)$.
 
+No arquivo [`polynomial`](polynomial_pt.md) apresentamos mais alguns detalhes teoricos sobre polinômios e a equivalência dos polinômios sobre $\mathbb{Z}_2$ e as sequências (ou palavras) binárias.
+
 ## Uso
 
 ### Definição da Classe
@@ -112,7 +114,7 @@ int main()
 
 ## Compilação
 
-### Usando MINGW64 e g++
+### Compilação no Windows
 
 1. Instale o [MINGW-w64](http://mingw-w64.org/) e adicione-o ao seu PATH.
 2. Abra o terminal MINGW64 e navegue até o diretório do projeto.
@@ -128,28 +130,52 @@ int main()
     ./test
     ```
 
-5. A execução do `test` deve retornar:
-    ```
-    CRC-8
-    result crc: f1  checked value: f1
-    result crc: 8f  checked value: 8f
-    result crc: c8  checked value: c8
-    result crc: 13  checked value: 13
-
-    CRC-16
-    result crc: 6755        checked value: 6755
-    result crc: aae6        checked value: aae6
-    result crc: 3100        checked value: 3100
-    result crc:   8c        checked value:   8c
-
-    CRC-32
-    result crc: b8b77646    checked value: b8b77646
-    result crc: 626eed1d    checked value: 626eed1d
-    result crc: d26e6139    checked value: d26e6139
-    result crc: 9c86764b    checked value: 9c86764b
-    ```
-
 **Observação**: Outra opção é instalar o compilador g++ e configurar sua execução com o VS Code. 
+
+
+### Compilação no Linux
+
+1. Certifique-se de que o `g++` está instalado em seu sistema. Caso não esteja, você pode instalá-lo executando:
+
+    ```sh
+    sudo apt update
+    sudo apt install g++
+    ```
+
+2. Navegue até o diretório do projeto.
+3. Compile o código com o comando:
+
+    ```sh
+    g++ -o test CrcCalculator.cpp
+    ```
+
+4. Execute o programa com:
+
+    ```sh
+    ./test
+    ```
+
+A execução do `test` deve retornar:
+
+```
+CRC-8
+result crc: f1  checked value: f1
+result crc: 8f  checked value: 8f
+result crc: c8  checked value: c8
+result crc: 13  checked value: 13
+
+CRC-16
+result crc: 6755        checked value: 6755
+result crc: aae6        checked value: aae6
+result crc: 3100        checked value: 3100
+result crc:   8c        checked value:   8c
+
+CRC-32
+result crc: b8b77646    checked value: b8b77646
+result crc: 626eed1d    checked value: 626eed1d
+result crc: d26e6139    checked value: d26e6139
+result crc: 9c86764b    checked value: 9c86764b
+```
 
 ## Contribuições
 
