@@ -78,7 +78,7 @@ Este processo demonstra que, embora os polinômios possam ser divididos, o resul
 
 ---
 
-## Correspondência entre Polinômios e Sequências Binárias
+## Correspondência entre Polinômios em $\mathbb{Z}_2$ e Sequências Binárias
 
 1. **Polinômios como Sequências Binárias**:
    - Cada termo $x^i$ em um polinômio pode ser mapeado para o bit $b_i$ em uma sequência binária, onde $b_i$ é 0 ou 1. O polinômio $P(x) = a_n x^n + \cdots + a_1 x + a_0$ é representado pela sequência binária $a_n a_{n-1} \cdots a_1 a_0$.

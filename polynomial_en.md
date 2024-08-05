@@ -78,7 +78,7 @@ This process demonstrates that although polynomials can be divided, the result u
 
 ---
 
-## Correspondence between Polynomials and Binary Sequences
+## Correspondence between Polynomials in $\mathbb{Z}_2$  and Binary Sequences
 
 1. **Polynomials as Binary Sequences**:
    - Each term $x^i$ in a polynomial can be mapped to the bit $b_i$ in a binary sequence, where $b_i$ is 0 or 1. The polynomial $P(x) = a_n x^n + \cdots + a_1 x + a_0$ is represented by the binary sequence $a_n a_{n-1} \cdots a_1 a_0$.
